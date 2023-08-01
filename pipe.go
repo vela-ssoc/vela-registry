@@ -4,8 +4,8 @@
 package registry
 
 import (
-	"github.com/vela-ssoc/vela-kit/pipe"
 	"github.com/vela-ssoc/vela-kit/lua"
+	"github.com/vela-ssoc/vela-kit/pipe"
 	"golang.org/x/sys/windows/registry"
 )
 
@@ -43,7 +43,7 @@ func (p pv) Index(L *lua.LState, key string) lua.LValue {
 }
 
 func (r *registryGo) onReadValue(L *lua.LState, prefix string,
-	root registry.Key, info *registry.KeyInfo, pp *pipe.Px) {
+	root registry.Key, info *registry.KeyInfo, pp *pipe.Chains) {
 
 	defer root.Close()
 
@@ -79,7 +79,7 @@ func (r *registryGo) onReadValue(L *lua.LState, prefix string,
 }
 
 func (r *registryGo) onReadSubValue(L *lua.LState, prefix string,
-	root registry.Key, info *registry.KeyInfo, pp *pipe.Px) {
+	root registry.Key, info *registry.KeyInfo, pp *pipe.Chains) {
 
 	if info.SubKeyCount <= 0 {
 		return
