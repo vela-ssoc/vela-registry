@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"github.com/vela-ssoc/vela-kit/auxlib"
 	"github.com/vela-ssoc/vela-kit/lua"
-	"github.com/vela-ssoc/vela-kit/xreflect"
+	"github.com/vela-ssoc/vela-kit/reflectx"
 	"golang.org/x/sys/windows/registry"
 )
 
@@ -173,7 +173,7 @@ func (rk *rKey) LKeysHelper(L *lua.LState, sub bool) int {
 		return 2
 	}
 
-	lv := xreflect.ToLValue(names, L)
+	lv := reflectx.ToLValue(names, L)
 	L.Push(lv)
 	return 1
 }
